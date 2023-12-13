@@ -1,5 +1,17 @@
+h1, .square {
+  text-align: center;
+}
+
 .square {
   border: 2px solid black;
   height: 100px;
   width: 100px;
+  text-align: center; 
+  font-size: 10rem;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 610 px;
+  margin: 0 auto;
 }
