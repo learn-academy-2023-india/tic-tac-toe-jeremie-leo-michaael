@@ -24,3 +24,10 @@ h1, .square {
   width: 610px;
   margin: 0 auto;
 }
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 320px;
+    margin: 0 auto;
+}
