@@ -16,6 +16,7 @@ h1, .square {
 
 .square:hover {
   background-color: #f0f0f0; 
+
 }
 
 .squares {
@@ -23,11 +24,12 @@ h1, .square {
   grid-template-columns: repeat(3, 200px);
   width: 610px;
   margin: 0 auto;
+  
 }
 
-.grid {
-    display: flex;
-    flex-wrap: wrap;
-    width: 320px;
-    margin: 0 auto;
+.squares {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  width: 610px;
+  margin: 0 auto;
 }
