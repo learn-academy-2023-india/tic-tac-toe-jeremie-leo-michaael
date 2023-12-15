@@ -11,11 +11,15 @@ h1, .square {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
 .square:hover {
-  background-color: #f0f0f0; 
+  background-color: #CB1818;
+}
+
+.square.rotate {
+  transform: rotate(180deg);
 }
 
 .squares {
@@ -23,4 +27,31 @@ h1, .square {
   grid-template-columns: repeat(3, 200px);
   width: 610px;
   margin: 0 auto;
+}
+
+.restart-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.restart-button-container button {
+  background-color: #1F51FF; 
+  color: white;
+  padding: 10px 20px; 
+  border: none; 
+  border-radius: 5px;
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+}
+
+.restart-button-container button:hover {
+  background-color: #1F51FF; 
+}
+
+.result {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }

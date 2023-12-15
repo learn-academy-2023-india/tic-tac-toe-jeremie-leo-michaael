@@ -1,0 +1,29 @@
+.square {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+    font-size: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    animation: none; /* Disable animation by default */
+  }
+  
+  .square:hover {
+    background-color: #fa0808;
+  }
+  
+  .rotate {
+    animation: spin 0.5s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
