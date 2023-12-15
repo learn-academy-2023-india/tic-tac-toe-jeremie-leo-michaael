@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Square from './components/Square'
 import './App.css'
 
-
-
 const calculateWinner = (squares) => {
   const lines = [
     [0, 1, 2],
@@ -19,48 +17,59 @@ const calculateWinner = (squares) => {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i]
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a]; // Return the winner's symbol
+      return squares[a] // return the winner's symbol
     }
   }
 
-  // Check for a draw (if all squares are filled)
+  // check for a draw: no winner yet
   if (squares.every((square) => square)) {
-    return 'Draw';
+    return 'Cat\'s game'
   }
 
-  return null; // No winner yet
-};
+  return null
+}
 
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
   const [isPlayerOneTurn, setPlayerOneTurn] = useState(true)
-  
+
   const handleClick = (id) => {
-    // do nothing if the square has already been clicked
-    if (squares[id] !== null) {
+    // do nothing if the square has already been clicked or the game is won/drawn
+    if (squares[id] !== null || calculateWinner(squares)) {
       return
     }
-  
+
     const newSquares = [...squares]
-  
+
     if (isPlayerOneTurn) {
       newSquares[id] = 'X'
     } else {
       newSquares[id] = 'O'
     }
-  
+
     setSquares(newSquares)
     setPlayerOneTurn(!isPlayerOneTurn)
   }
-  
-  let playerTurnText
+
+  const restartGame = () => {
+    // reset the game state
+    setSquares(Array(9).fill(null))
+    setPlayerOneTurn(true)
+  }
+
   const winner = calculateWinner(squares)
+  let playerTurnText
+
   if (winner) {
-    playerTurnText = `Winner: ${winner}`
-  } else if (winner === 'Draw') {
-    playerTurnText = 'It\'s a draw!'
+    playerTurnText = <p className="result winner">Winner: {winner}!</p>
+  } else if (winner === 'Cat\'s game') {
+    playerTurnText = <p className="result">Cat's game!</p>
   } else {
-    playerTurnText = isPlayerOneTurn ? "Player 1's Turn (X)" : "Player 2's Turn (O)"
+    if (isPlayerOneTurn) {
+      playerTurnText = <p className="result">Player 1's Turn (X)</p>
+    } else {
+      playerTurnText = <p className="result">Player 2's Turn (O)</p>
+    }
   }
 
   return (
@@ -71,7 +80,13 @@ const App = () => {
           <Square key={index} value={value} onClick={() => handleClick(index)} />
         ))}
       </div>
-      <p>{playerTurnText}</p>
+      <div className="result-container">
+        {playerTurnText}
+      </div>
+      {/* reset button */}
+      <div className="restart-button-container">
+        <button onClick={restartGame}>Restart Game</button>
+      </div>
     </>
   )
 }
